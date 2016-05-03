@@ -40,80 +40,80 @@ CODE FILE
 
 The code file contains one or more sections which have code which will be compiled to the library file. In this example we have: -
 
-  SECTION "STRINGS"
-  
-  //Various string functions
-  //
-  //27/03/2016 PJ
-  //
-  //V1.00
-  // length(string) - returns a length in bytes
-  // concatSize(string1,string2) - returns the required vector size
-  // concat(string1,string2) - joins two strings and returns a vector
-  // left(string,length) - returns 'length' number of characters
-  
-  get "LIBHDR"
-  get "SYSHDR"
-  GET "STRHDR"
-  
-  let length(S) = VALOF
-  $(
-     RESULTIS S%0 //size of string in bytes is held in byte 0
-  $)
-  
-  let concatSize(S,T) = VALOF
-  $(
-     //takes two strings and returns the length divided by 2
-     //this is the size of the vector to hold the results
-     RESULTIS (S%0 + T%0)/2
-  $)
-  
-  and concat(S,T) = VALOF
-  $(
-     let size, vector, ScharCount, TcharCount = 0,0,0,0
-  
-     size := concatSize(S,T)*2  //get the size of the total string (this is a VEC size so *2)
-     ScharCount := S%0
-     TcharCount := T%0
-  
-     vector := GETVEC(size)
-  
-     //loop through the first string and add it to the new vctor
-  
-     FOR N = 0 TO ScharCount DO
-        vector%N := S%N
-  
-     FOR N = ScharCount+1 TO Size DO
-        vector%(N) :=T%(N-ScharCount)
-  
-     vector%0 := Size
-  
-     RESULTIS vector
-  
-  $)
-  
-  let left(S,L) = VALOF
-  $(
-     //return the left ## number of characters
-     //if ## is greater than string size return the string as is
-  
-     let size, vector = 0,0
-  
-     size := S%0
-  
-     IF size < L THEN L :=size
-  
-     vector := GETVEC(L/2)
-  
-     FOR N = 0 TO L DO
-        vector%N := S%N
-  
-     vector%0 :=L
-  
-     RESULTIS vector
-  
-  $)
-  .
+    SECTION "STRINGS"
+    
+    //Various string functions
+    //
+    //27/03/2016 PJ
+    //
+    //V1.00
+    // length(string) - returns a length in bytes
+    // concatSize(string1,string2) - returns the required vector size
+    // concat(string1,string2) - joins two strings and returns a vector
+    // left(string,length) - returns 'length' number of characters
+    
+    get "LIBHDR"
+    get "SYSHDR"
+    GET "STRHDR"
+    
+    let length(S) = VALOF
+    $(
+       RESULTIS S%0 //size of string in bytes is held in byte 0
+    $)
+    
+    let concatSize(S,T) = VALOF
+    $(
+       //takes two strings and returns the length divided by 2
+       //this is the size of the vector to hold the results
+       RESULTIS (S%0 + T%0)/2
+    $)
+    
+    and concat(S,T) = VALOF
+    $(
+       let size, vector, ScharCount, TcharCount = 0,0,0,0
+    
+       size := concatSize(S,T)*2  //get the size of the total string (this is a VEC size so *2)
+       ScharCount := S%0
+       TcharCount := T%0
+    
+       vector := GETVEC(size)
+    
+       //loop through the first string and add it to the new vctor
+    
+       FOR N = 0 TO ScharCount DO
+          vector%N := S%N
+    
+       FOR N = ScharCount+1 TO Size DO
+          vector%(N) :=T%(N-ScharCount)
+    
+       vector%0 := Size
+    
+       RESULTIS vector
+    
+    $)
+    
+    let left(S,L) = VALOF
+    $(
+       //return the left ## number of characters
+       //if ## is greater than string size return the string as is
+    
+       let size, vector = 0,0
+    
+       size := S%0
+    
+       IF size < L THEN L :=size
+    
+       vector := GETVEC(L/2)
+    
+       FOR N = 0 TO L DO
+          vector%N := S%N
+    
+       vector%0 :=L
+    
+       RESULTIS vector
+    
+    $)
+    .
 
 Note that the first line is a 'SECTION' and there is a full stop at the end of the section. Each section must have a full stop (unless the section ends at the end of the file but best to use one anyway).
 Note also there is no START() function as this is a library not a program.
