@@ -8,7 +8,9 @@ The main purpose was of course to figure out how to create a library which can b
 So why bother?
 
 1) Code re-use, obviously
+
 2) Precompiled code - the LIB files are already in CINT code so just need to be added in (via NEEDCIN) which is faster
+
 3) Limited resources - the Beeb only has 32KB of RAM which BCPL eats into very quickly. Not having all the code in one file helps
 
 According to the BCPL manual on a Beeb with no co-processor you can expect to only have a 200 line program to compile before running out of memory. Assuming nothing else is loaded of course. Things are better with a co-processor but still limited.
