@@ -116,5 +116,10 @@ The code file contains one or more sections which have code which will be compil
     .
 
 Note that the first line is a 'SECTION' and there is a full stop at the end of the section. Each section must have a full stop (unless the section ends at the end of the file but best to use one anyway).
+
 Note also there is no START() function as this is a library not a program.
+
 The name in the SECTION is the name to be used in the NEEDS directive in the file that will be calling the library. 
+
+You must include the header file in the GET section for the function names to be recongised.
+
