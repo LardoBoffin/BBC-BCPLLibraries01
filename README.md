@@ -23,18 +23,18 @@ HEADER FILE
 
 The header creates global variables to hold the function names, in this example we have: - 
   
-  //strhdr
-
-  manifest $( ug = firstfreeglobal $)
+    //strhdr
   
-  GLOBAL $(
-    LENGTH:ug
-    CONCATSIZE:ug+1
-    CONCAT:ug+2
-    LEFT:ug+3
-  $)
+    manifest $( ug = firstfreeglobal $)
+    
+    GLOBAL $(
+      LENGTH:ug
+      CONCATSIZE:ug+1
+      CONCAT:ug+2
+      LEFT:ug+3
+    $)
 
-Each function that can be called from the library has a name (that matches exactly) set here. I use the firstfreeglobal constant to avoid having to keep track of them.
+Each function that can be called from the library has a name (that matches exactly) set here. I use the 'firstfreeglobal' constant to avoid having to keep track of them.
 
 CODE FILE
 
@@ -121,5 +121,6 @@ Note also there is no START() function as this is a library not a program.
 
 The name in the SECTION is the name to be used in the NEEDS directive in the file that will be calling the library. 
 
-You must include the header file in the GET section for the function names to be recongised.
+You must include the header file in the GET section (GET "STRHDR") for the function names to be recongised. This call must also be placed in whichever program wants to use the library.
+
 
