@@ -125,11 +125,9 @@ Note that you must include the header file in the GET section (GET "STRHDR") for
 
 To compile the library file it is a simple case of the usual: - 
 
-BCPL stings LIBStr
-
-*drive 1
-
-SAVE LIBStr
+    BCPL stings LIBStr
+    *drive 1
+    SAVE LIBStr
 
 
 Note the inclusion of the section name in the compiler output.
@@ -165,15 +163,11 @@ Ideally this program would have its own header file which would include the GET 
 
 In order to use this file: - 
 
-BCPL strtest tmp
-
-*drive 1
-
-SAVE tmp
-
-NEEDCIN tmp LIBSTR exe
-
-*destroy tmp
+    BCPL strtest tmp 
+    *drive 1 
+    SAVE tmp 
+    NEEDCIN tmp LIBSTR exe 
+    *destroy tmp 
 
 
 Then type "exe" to run the program. It will show some text and then print out the length of the text "string test take 2".
