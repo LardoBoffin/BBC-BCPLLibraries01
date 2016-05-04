@@ -136,7 +136,7 @@ Once compiled the file can be used as a library in the normal way.
 
 On drive 0 there is a sample file that uses the library called "STRTEST".
 
-This file has a NEEDS "strings" at the start and includes GET "STRHDR". As above in order for this fle to be compiled the global variables holding the locations of the library functions need to be present.
+This file has a NEEDS "strings" at the start and includes GET "STRHDR". As mentioned above in order for this file to be compiled the global variables holding the locations of the library functions need to be present.
 
 Sample code to call the library: - 
 
