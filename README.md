@@ -68,7 +68,7 @@ The code file contains one or more sections which have code which will be compil
        RESULTIS (S%0 + T%0)/2
     $)
     
-    and concat(S,T) = VALOF
+    let concat(S,T) = VALOF
     $(
        let size, vector, ScharCount, TcharCount = 0,0,0,0
     
@@ -117,7 +117,7 @@ The code file contains one or more sections which have code which will be compil
 
 Note that the first line is a 'SECTION' and there is a full stop at the end of the section. Each section must have a full stop (unless the section ends at the end of the file but best to use one anyway).
 
-Notes the name in the SECTION is the name to be used in the NEEDS directive in the file that will be calling the library. 
+Note the name in the SECTION is the name to be used in the NEEDS directive in the file that will be calling the library. 
 
 Note there is no START() function as this is a library not a program.
 
@@ -171,3 +171,6 @@ In order to use this file: -
 
 
 Then type "exe" to run the program. It will show some text and then print out the length of the text "string test take 2".
+
+To follow - addition of more string functions and a look into vectors which are used extensively in string handling. 
+
