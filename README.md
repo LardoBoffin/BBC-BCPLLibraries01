@@ -117,10 +117,63 @@ The code file contains one or more sections which have code which will be compil
 
 Note that the first line is a 'SECTION' and there is a full stop at the end of the section. Each section must have a full stop (unless the section ends at the end of the file but best to use one anyway).
 
-Note also there is no START() function as this is a library not a program.
+Notes the name in the SECTION is the name to be used in the NEEDS directive in the file that will be calling the library. 
 
-The name in the SECTION is the name to be used in the NEEDS directive in the file that will be calling the library. 
+Note there is no START() function as this is a library not a program.
 
-You must include the header file in the GET section (GET "STRHDR") for the function names to be recongised. This call must also be placed in whichever program wants to use the library.
+Note that you must include the header file in the GET section (GET "STRHDR") for the function names to be recongised in the library file. This call must also be placed in whichever program wants to use the library.
+
+To compile the library file it is a simple case of the usual: - 
+
+BCPL stings LIBStr
+
+*drive 1
+
+SAVE LIBStr
 
 
+Note the inclusion of the section name in the compiler output.
+
+Once compiled the file can be used as a library in the normal way.
+
+On drive 0 there is a sample file that uses the library called "STRTEST".
+
+This file has a NEEDS "strings" at the start and includes GET "STRHDR". As above in order for this fle to be compiled the global variables holding the locations of the library functions need to be present.
+
+Sample code to call the library: - 
+
+    NEEDS "strings"
+    GET "LIBHDR"
+    GET "STRHDR"
+    
+    LET START() BE
+    $(
+       LET l = 0
+       LET s,t = "Hello there," , " World!*N"
+       LET target = GETVEC(concatSize(s,t))
+    
+       target := concat(s,t)
+    
+       WRITES(target)
+    
+       l := LENGTH ("string test take 2")
+       WRITEN(l)
+    
+    $)
+
+Ideally this program would have its own header file which would include the GET functions.
+
+In order to use this file: - 
+
+BCPL strtest tmp
+
+*drive 1
+
+SAVE tmp
+
+NEEDCIN tmp LIBSTR exe
+
+*destroy tmp
+
+
+Then type "exe" to run the program. It will show some text and then print out the length of the text "string test take 2".
