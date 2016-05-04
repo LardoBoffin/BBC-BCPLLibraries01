@@ -1,0 +1,11 @@
+//Header for the Strings library
+//
+
+manifest $( ug = firstfreeglobal $)
+
+GLOBAL $(
+LENGTH:ug
+CONCATSIZE:ug+1
+CONCAT:ug+2
+LEFT:ug+3
+$)

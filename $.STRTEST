@@ -1,0 +1,22 @@
+
+
+NEEDS "strings"
+GET "LIBHDR"
+GET "STRHDR"
+
+LET START() BE
+$(
+   LET l = 0
+   LET s,t = "Hello there," , " World!*N"
+   LET target = GETVEC(concatSize(s,t))
+
+   target := concat(s,t)
+
+   WRITES(target)
+
+   l := LENGTH ("string test take 2")
+   WRITEN(l)
+
+
+
+$)
